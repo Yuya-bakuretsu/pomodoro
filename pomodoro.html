@@ -11,8 +11,14 @@
     <h1>ポモドーロ・タイマー</h1>
     <div id="timer_zone"></div>
     <script src="pomodoro.js"></script>
+
+    <form id="timer" >
     <button id="start">スタートする</button>
     <button id="stop">停止する</button>
 
+        <p id="working_form"><label>仕事時間<input type="tel" id="workingTime" size="2" maxlength="2" value="25">分</label></p>
+        <p id="rest_form"><label>休憩時間<input type="tel" id="restTime" size="2" maxlength="2" value="5">分</label></p>
+        <p id="breaking_form"><label>長休憩時間<input type="tel" id="breakingTime" size="2" maxlength="2" value="20">分</label></p>
+    </form>
 </body>
 </html>
