@@ -14,15 +14,13 @@ $(function () {
                 e++;
             }
         }
+            
 
-        var confirmed = confirm("ポモドーロタイマーを発動します。準備はよろしいですか?")
-        if(e != 0){
-            alert("未入力の欄があります。確認して入力してください");
-            confirmed = false
-        }
-        if (confirmed) {
+        if (confirm("ポモドーロタイマーを発動します。準備はよろしいですか?") && e == 0) {
             changeTurn();
             this.disabled = true
+        } else if (e != 0) {
+            alert("未入力の欄があります。確認して入力してください");
         }
     })
 
@@ -30,12 +28,12 @@ $(function () {
         start.disabled = false;
         flag = 0;
         clearInterval(alarm);
-        timer.innerHTML = "0分0秒";
     })
 
     function changeTurn() {
         flag++;
         console.log("flag = " + flag);
+        document.getElementById('sound').play();
         switch (flag % 8) {
             case 0:
                 alert("長休憩の時間です。休んでください");
