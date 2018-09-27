@@ -6,6 +6,7 @@ $(function () {
     var flag = 0;
     var alarm;
     var timerTime = [];
+    var username;
     $('#start').click(function () {
         var timeValue = ["workingTime", "restTime", "breakingTime"]
         var e = 0;
@@ -14,6 +15,7 @@ $(function () {
             if (timerTime[i] == "") {
                 e++;
             }
+            username = document.getElementById("name_space").value;
         }
 
 
@@ -39,18 +41,20 @@ $(function () {
             case 0:
                 alert("長休憩の時間です。休んでください");
                 rotate(timerTime[2] * 60);
+                sleeping.innerHTML = `${username}は長い休憩を取っています`
                 break;
 
             case 2:
             case 4:
             case 6:
                 alert("休憩時間です。5分休憩してください");
-                sleeping.innerHTML = "楠澤は今休憩中です";
+                sleeping.innerHTML = `${username}は今休憩中です`;
                 rotate(timerTime[1] * 60);
                 break;
 
             default:
                 alert("仕事時間です。頑張って仕事してください。");
+                sleeping.innerHTML = `${username}は今仕事中です(話しかけるなら休憩中に!)`;
                 rotate(timerTime[0] * 60);
                 break;
         }
