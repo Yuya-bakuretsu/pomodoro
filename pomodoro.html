@@ -11,7 +11,9 @@
     <h1>ポモドーロ・タイマー</h1>
     <div id="timer_zone"></div>
     <script src="pomodoro.js"></script>
-
+    <audio id=sound preload="auto">
+        <source src="chime.mp3" type="audio/mp3" />
+    </audio>
     <form id="timer" >
     <button id="start">スタートする</button>
     <button id="stop">停止する</button>
@@ -20,5 +22,6 @@
         <p id="rest_form"><label>休憩時間<input type="tel" id="restTime" size="2" maxlength="2" value="5">分</label></p>
         <p id="breaking_form"><label>長休憩時間<input type="tel" id="breakingTime" size="2" maxlength="2" value="20">分</label></p>
     </form>
+    <h2 id="sleeping"></h2>
 </body>
 </html>

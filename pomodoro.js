@@ -1,6 +1,7 @@
 $(function () {
     "use strict";
     var timer = document.getElementById("timer_zone");
+    var sleeping = document.getElementById("sleeping");
     var limit;
     var flag = 0;
     var alarm;
@@ -15,14 +16,12 @@ $(function () {
             }
         }
 
-        var confirmed = confirm("ポモドーロタイマーを発動します。準備はよろしいですか?")
-        if(e != 0){
-            alert("未入力の欄があります。確認して入力してください");
-            confirmed = false
-        }
-        if (confirmed) {
+
+        if (confirm("ポモドーロタイマーを発動します。準備はよろしいですか?") && e == 0) {
             changeTurn();
             this.disabled = true
+        } else if (e != 0) {
+            alert("未入力の欄があります。確認して入力してください");
         }
     })
 
@@ -30,12 +29,12 @@ $(function () {
         start.disabled = false;
         flag = 0;
         clearInterval(alarm);
-        timer.innerHTML = "0分0秒";
     })
 
     function changeTurn() {
         flag++;
         console.log("flag = " + flag);
+        document.getElementById('sound').play();
         switch (flag % 8) {
             case 0:
                 alert("長休憩の時間です。休んでください");
@@ -46,6 +45,7 @@ $(function () {
             case 4:
             case 6:
                 alert("休憩時間です。5分休憩してください");
+                sleeping.innerHTML = "楠澤は今休憩中です";
                 rotate(timerTime[1] * 60);
                 break;
 
@@ -73,6 +73,6 @@ $(function () {
                 clearInterval(alarm);
                 changeTurn();
             };
-        }, 10);
+        }, 200);
     }
 });
